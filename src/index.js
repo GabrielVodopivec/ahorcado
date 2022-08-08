@@ -73,8 +73,10 @@ function listener(event) {
 
             space.innerHTML = letter;
             space.className = "hiddenLetterGuessed";
+
             event.path[0].disabled = true;
-            event.path[0].className = "buttonDisabled"
+            event.path[0].className = "buttonDisabled";
+
             flag = false;
             aciertos.push(letter)
         }
@@ -153,6 +155,7 @@ const resetFunction = () => {
         let button = document.getElementById(String.fromCharCode(i))
         button.disabled = false;
         button.onclick = listener;
+        button.className = "button"
     }
 
     let message = document.getElementById("message")
