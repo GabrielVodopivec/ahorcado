@@ -1,0 +1,186 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Montserrat', sans-serif;
+    background-color:brown;
+    background-image: url("https://64.media.tumblr.com/32414db4578ca95101dbcde6a5dbaac4/tumblr_mp55a4K8MK1s8e1qno1_500.gif");
+    background-position: center 100%; 
+    background-size: cover; 
+}
+/* http://2.bp.blogspot.com/-TI7Ff8dYk8Y/Un-F8LMWcqI/AAAAAAABsFw/z4WhO1m-ZD0/s1600/Paisajes+de+terror+%252811%2529p.gif */
+/* https://64.media.tumblr.com/32414db4578ca95101dbcde6a5dbaac4/tumblr_mp55a4K8MK1s8e1qno1_500.gifv */
+/* http://1.bp.blogspot.com/--f-Fs3j_-lg/UPRcuCALKhI/AAAAAAAAIl8/UjQBDBjJenU/s640/image%255B3%255D%2Be.png */
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.imgContainer {
+/*     border-style: solid;
+    border-width: 2px;
+    border-color: black; */
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: antiquewhite;
+
+    height: 30vh;
+    width: 15vw;
+}
+
+.palabraEscondida {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+
+    margin-top: 10px;
+    width: 80vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: black;
+}
+
+.letterContainer {
+
+/*     border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px; */
+
+    height: 20vh;
+    width: 80vw;
+    padding: 10px;
+    margin: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+
+}
+
+.hiddenLetter {
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color:gray;
+    margin: 2px;
+    width: 50px;
+    height: 40px;
+}
+
+.hiddenLetterGuessed {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color:black;
+    color: gray;
+    margin: 2px;
+    width: 50px;
+    height: 40px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px;
+    height: 60px;
+    width: 60px;
+
+    border-radius: 5px;
+    border-style: none;
+    font-size: x-large;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.buttonDisabled {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px;
+    height: 60px;
+    width: 60px;
+
+    border-radius: 5px;
+    border-style: none;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.button:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: 200ms;
+    background-color: black;
+    color: gray;
+}
+
+.message {
+    color: aliceblue;
+    margin-left: 42vw;
+}
+
+#img {
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+}
+
+.reset {
+    height: 50px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 5px;
+    border-style: none;
+    font-weight: 500;
+    font-size: large;
+    cursor: pointer;
+}
+
+.reset:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: 200ms;
+    background-color:black;
+    color: gray;
+}
+
+.title {
+    margin: 0px 0px 10px 0px;
+    opacity: 80%;
+    background-color: black;
+    color: gray;
+    width: 95vw;
+    padding-left: 5vw;
+    padding-top: 5vw;
+}
