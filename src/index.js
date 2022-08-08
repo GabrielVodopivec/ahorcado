@@ -36,7 +36,7 @@ let letterContainer = document.getElementById("letterContainer");
 let reset = document.getElementById("reset");
 let hidennWord = document.getElementById("hidennWord");
 let img = document.getElementById("img");
-img.src = "./assests/01.PNG";
+img.src = "./assests/01.png";
 // modificacion del nombre
 
 
@@ -131,7 +131,7 @@ const resetFunction = () => {
 
     oportunidades = 1;
     aciertos = [];
-    img.src = "./assests/01.PNG";
+    img.src = "./assests/01.png";
 
     for (let i = 0; i < word.length; i++) {
         hidennWord.removeChild(
