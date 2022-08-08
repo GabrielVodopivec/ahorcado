@@ -12,6 +12,7 @@ body {
 /* https://64.media.tumblr.com/32414db4578ca95101dbcde6a5dbaac4/tumblr_mp55a4K8MK1s8e1qno1_500.gifv */
 /* http://1.bp.blogspot.com/--f-Fs3j_-lg/UPRcuCALKhI/AAAAAAAAIl8/UjQBDBjJenU/s640/image%255B3%255D%2Be.png */
 .mainContainer {
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,9 +66,8 @@ body {
     padding: 10px;
     margin: 5px;
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
     
 
 }
