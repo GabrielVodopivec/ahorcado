@@ -30,7 +30,7 @@ const randomWord = (max) => {
 let word = randomWord(listaDePalabras.length);
 
 let oportunidades = 1;
-let aciertos = [];
+let aciertos = 0;
 
 let letterContainer = document.getElementById("letterContainer");
 let reset = document.getElementById("reset");
@@ -78,7 +78,7 @@ function listener(event) {
             event.path[0].className = "buttonDisabled";
 
             flag = false;
-            aciertos.push(letter)
+            aciertos++;
         }
     }
 
@@ -108,7 +108,7 @@ function listener(event) {
     }
     
 
-    if (aciertos.length === word.length) {
+    if (aciertos === word.length) {
         img.src = `./assests/rumba-fiesta.gif`
         let message = document.createElement("h1");
 
@@ -132,7 +132,7 @@ function listener(event) {
 const resetFunction = () => {
 
     oportunidades = 1;
-    aciertos = [];
+    aciertos = 0;
     img.src = "./assests/01.png";
 
     for (let i = 0; i < word.length; i++) {
