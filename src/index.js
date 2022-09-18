@@ -50,6 +50,8 @@ for (let i = 0; i < word.length; i++) {
     hidennWord.appendChild(space);
 }
 
+let teclasPresionadas = {};
+
 for (let i = 65; i < (65 + 26); i++) {
     let newButton = document.createElement("button");
     let letter = String.fromCharCode(i);
@@ -57,34 +59,48 @@ for (let i = 65; i < (65 + 26); i++) {
     newButton.innerText = letter;
     newButton.id = letter;
     newButton.className = "button";
+
+    teclasPresionadas[letter] = false;
     
     letterContainer.appendChild(newButton);
 
 }
 
-console.log(letterContainer.children);
-
 const callbackKeyEvent = (event) => {
-    let keyLetter = event.key.toUpperCase();
-    let codeLetter = keyLetter.charCodeAt();
-    
-    if (codeLetter > 64 && codeLetter < (64 + 28)) {
-        listener(keyLetter, true);
+    // Para conisderar solo teclas de 1 solo caracter (excluir el Enter principalmente);
+    if (event.key.length === 1) {
+
+        let keyLetter = event.key.toUpperCase(); // UperCase a la letra presionada;
+        let codeLetter = keyLetter.charCodeAt(); // Valor Unicode del caracter de índice 0 del string;
+
+        // Si es una letra de la A a la Z y aún no fue presionada se ejecuta la funcion listener();
+        if (codeLetter > 64 && codeLetter < (64 + 28) && !teclasPresionadas[keyLetter]) {
+            listener(keyLetter, true);
+        }
     }
     
 }
 
+// eventListener al document para escuchar un keyUp y ejecutar el callbackKeyEvent;
 document.addEventListener('keyup', callbackKeyEvent)
 
 
+// Funcion de reseto del juego a través del teclado, presionando Enter;
+const resetKeyEvent = (event) => {
+    if(event.key === 'Enter') {
+        resetFunction();
+    }
+}
+
+// eventListener para escuchar un keyUp y ejecutar el resetKeyEvent,
+// agrego uno independiente porque el callbackKeyEvent se remueve en determinadas circunstancias;
+document.addEventListener('keyup', resetKeyEvent)
+
 function listener(event, keyEvent) {
     let letter;
-
-    if (keyEvent) {
-        letter = event;
-    } else {
-        letter = event.target.innerHTML;
-    }
+    
+    keyEvent ? letter = event : letter = event.target.innerHTML;
+    
     let flag = true;
 
     for (let i = 0; i < word.length; i++) {
@@ -99,15 +115,15 @@ function listener(event, keyEvent) {
 
             letterButton.disabled = true;
             letterButton.className = "buttonDisabled";
-            // event.path[0].disabled = true;
-            // event.path[0].className = "buttonDisabled";
 
+            teclasPresionadas[letter] = true;
             flag = false;
             aciertos++;
         }
     }
 
     if (flag) {
+
         oportunidades++
 
         if (oportunidades === 7) {
@@ -148,11 +164,13 @@ function listener(event, keyEvent) {
         document.removeEventListener('keyup', callbackKeyEvent)
     }    
     
-
+    // console.log("Aciertos: ", aciertos, "oportunidades: ", oportunidades , "letras", word.length)
 }
 
 
 const resetFunction = () => {
+
+    teclasPresionadas = {};
     title.innerHTML = "El Ahorcado"
     imageContainer.style.backgroundSize = "contain";
     oportunidades = 1;
@@ -187,6 +205,7 @@ const resetFunction = () => {
     if(message) {
         document.body.removeChild(message)
     }
+
     document.addEventListener('keyup', callbackKeyEvent)
     console.log(word)
     
