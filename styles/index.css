@@ -56,13 +56,15 @@ body {
     border-width: 2px;
     border-color: black; */
     background-color:white;
-    margin-top: 70px;
+    margin-top: 5vh;
     border-radius: 15px;
     background-position: center;
     background-size:contain;
     background-repeat: no-repeat;
     height: 300px;
     width: 300px;
+
+    transition: background-image 600ms ease-in-out;
     
 }
 

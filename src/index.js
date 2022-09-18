@@ -45,6 +45,9 @@ imageContainer.style.backgroundImage = "url('../assets/01.PNG')";
 // modificacion del nombre
 
 
+// precarga de imagenes
+
+
 for (let i = 0; i < word.length; i++) {
     let space = document.createElement("div");
     space.innerHTML = "";
@@ -100,8 +103,9 @@ function listener(event) {
                     ).onclick = null;
             }
             
-                imageContainer.style.backgroundImage = "url('../assets/gifAhorcado.gif')";
-                imageContainer.style.backgroundSize = "cover";
+                imageContainer.style.backgroundImage = `url('../assets/0${oportunidades}.PNG')`;
+                // imageContainer.style.backgroundImage = "url('../assets/gifAhorcado.gif')";
+                // imageContainer.style.backgroundSize = "cover";
             return 
         }
 
@@ -112,9 +116,9 @@ function listener(event) {
 
     if (aciertos === word.length) {
         imageContainer.style.backgroundImage = `url('../assets/rumba-fiesta.gif')`
-        imageContainer.style.backgroundSize = "cover";
+        // imageContainer.style.backgroundSize = "cover";
 
-        title.innerHTML = "GANASTEEE !!!"
+        title.innerHTML = "ADIVINASTE !!!"
 
         for (let i = 65; i < (65 + 26); i++) {
             let button = document.getElementById(String.fromCharCode(i))
