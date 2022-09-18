@@ -42,12 +42,6 @@ let img = document.getElementById("img");
 imageContainer.style.backgroundImage = "url('../assets/01.PNG')";
 /* img.src = "../assets/01.png"; */
 
-// modificacion del nombre
-
-
-// precarga de imagenes
-
-
 for (let i = 0; i < word.length; i++) {
     let space = document.createElement("div");
     space.innerHTML = "";
@@ -68,9 +62,29 @@ for (let i = 65; i < (65 + 26); i++) {
 
 }
 
-function listener(event) {
+console.log(letterContainer.children);
 
-    let letter = event.target.innerHTML;
+const callbackKeyEvent = (event) => {
+    let keyLetter = event.key.toUpperCase();
+    let codeLetter = keyLetter.charCodeAt();
+    
+    if (codeLetter > 64 && codeLetter < (64 + 28)) {
+        listener(keyLetter, true);
+    }
+    
+}
+
+document.addEventListener('keyup', callbackKeyEvent)
+
+
+function listener(event, keyEvent) {
+    let letter;
+
+    if (keyEvent) {
+        letter = event;
+    } else {
+        letter = event.target.innerHTML;
+    }
     let flag = true;
 
     for (let i = 0; i < word.length; i++) {
@@ -78,12 +92,15 @@ function listener(event) {
         if (word[i] === letter) {
 
             let space = document.getElementById(i);
+            let letterButton = document.getElementById(letter);
 
             space.innerHTML = letter;
             space.className = "hiddenLetterGuessed";
 
-            event.path[0].disabled = true;
-            event.path[0].className = "buttonDisabled";
+            letterButton.disabled = true;
+            letterButton.className = "buttonDisabled";
+            // event.path[0].disabled = true;
+            // event.path[0].className = "buttonDisabled";
 
             flag = false;
             aciertos++;
@@ -103,9 +120,12 @@ function listener(event) {
                     ).onclick = null;
             }
             
-                imageContainer.style.backgroundImage = `url('../assets/0${oportunidades}.PNG')`;
-                // imageContainer.style.backgroundImage = "url('../assets/gifAhorcado.gif')";
-                // imageContainer.style.backgroundSize = "cover";
+            imageContainer.style.backgroundImage = `url('../assets/0${oportunidades}.PNG')`;
+            // imageContainer.style.backgroundImage = "url('../assets/gifAhorcado.gif')";
+            // imageContainer.style.backgroundSize = "cover";
+
+            document.removeEventListener('keyup', callbackKeyEvent)
+
             return 
         }
 
@@ -116,7 +136,7 @@ function listener(event) {
 
     if (aciertos === word.length) {
         imageContainer.style.backgroundImage = `url('../assets/rumba-fiesta.gif')`
-        // imageContainer.style.backgroundSize = "cover";
+        imageContainer.style.backgroundSize = "cover";
 
         title.innerHTML = "ADIVINASTE !!!"
 
@@ -124,6 +144,8 @@ function listener(event) {
             let button = document.getElementById(String.fromCharCode(i))
             button.onclick = null;
         }
+
+        document.removeEventListener('keyup', callbackKeyEvent)
     }    
     
 
@@ -165,7 +187,7 @@ const resetFunction = () => {
     if(message) {
         document.body.removeChild(message)
     }
-
+    document.addEventListener('keyup', callbackKeyEvent)
     console.log(word)
     
 }
