@@ -34,6 +34,7 @@ let aciertos = 0;
 
 let imageContainer = document.getElementById("imgContainer")
 let letterContainer = document.getElementById("letterContainer");
+let title = document.getElementById("title")
 let reset = document.getElementById("reset");
 let hidennWord = document.getElementById("hidennWord");
 let img = document.getElementById("img");
@@ -91,36 +92,29 @@ function listener(event) {
 
         if (oportunidades === 7) {
 
-            let message = document.createElement("h1");
-    
-            message.textContent = "PERDISTE!!!!";
-            message.className = "message";
-            message.id = "message";
-            
-            document.body.appendChild(message);
-            
+            title.innerHTML = "PERDISTE !!!";
+                
             for (let i = 65; i < (65 + 26); i++) {
                 document.getElementById(
                     String.fromCharCode(i)
                     ).onclick = null;
-                }
-
-            return imageContainer.style.backgroundImage = "url('../assets/gifAhorcado.gif')"
+            }
+            
+                imageContainer.style.backgroundImage = "url('../assets/gifAhorcado.gif')";
+                imageContainer.style.backgroundSize = "cover";
+            return 
         }
 
-        imageContainer.style.backgroundImage = `url('../assets/0${oportunidades}.PNG')`
+        imageContainer.style.backgroundImage = `url('../assets/0${oportunidades}.PNG')`;
+        
     }
     
 
     if (aciertos === word.length) {
         imageContainer.style.backgroundImage = `url('../assets/rumba-fiesta.gif')`
-        let message = document.createElement("h1");
+        imageContainer.style.backgroundSize = "cover";
 
-        message.textContent = "ADIVINASTE!!!!";
-        message.className = "message";
-        message.id = "message";
-
-        document.body.appendChild(message);
+        title.innerHTML = "GANASTEEE !!!"
 
         for (let i = 65; i < (65 + 26); i++) {
             let button = document.getElementById(String.fromCharCode(i))
@@ -132,9 +126,9 @@ function listener(event) {
 }
 
 
-
 const resetFunction = () => {
-
+    title.innerHTML = "El Ahorcado"
+    imageContainer.style.backgroundSize = "contain";
     oportunidades = 1;
     aciertos = 0;
     imageContainer.style.backgroundImage = "url('../assets/01.PNG')";
@@ -173,6 +167,7 @@ const resetFunction = () => {
 }
 
 for (let i = 65; i < (65 + 26); i++) { 
+    
     document.getElementById(
         String.fromCharCode(i)
         ).onclick = listener;
