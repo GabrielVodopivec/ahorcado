@@ -9,7 +9,7 @@ let letterContainer = document.getElementById("letterContainer");
 let reset = document.getElementById("reset");
 let hidennWord = document.getElementById("hidennWord");
 let img = document.getElementById("img");
-img.src = "./assests/01.PNG";
+img.src = "../assests/01.PNG";
 
 
 for (let i = 0; i < word.length; i++) {

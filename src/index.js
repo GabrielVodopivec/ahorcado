@@ -32,11 +32,14 @@ let word = randomWord(listaDePalabras.length);
 let oportunidades = 1;
 let aciertos = 0;
 
+let imageContainer = document.getElementById("imgContainer")
 let letterContainer = document.getElementById("letterContainer");
 let reset = document.getElementById("reset");
 let hidennWord = document.getElementById("hidennWord");
 let img = document.getElementById("img");
-img.src = "./assests/01.png";
+
+imageContainer.style.backgroundImage = "url('../assets/01.png')";
+/* img.src = "../assets/01.png"; */
 // modificacion del nombre
 
 
@@ -101,15 +104,15 @@ function listener(event) {
                     ).onclick = null;
                 }
 
-            return img.src = "./assests/gifAhorcado.gif"
+            return imageContainer.style.backgroundImage = "url('../assets/gifAhorcado.gif')"
         }
 
-        img.src = `./assests/0${oportunidades}.PNG`
+        imageContainer.style.backgroundImage = `url('../assets/0${oportunidades}.PNG')`
     }
     
 
     if (aciertos === word.length) {
-        img.src = `./assests/rumba-fiesta.gif`
+        imageContainer.style.backgroundImage = `url('../assets/rumba-fiesta.gif')`
         let message = document.createElement("h1");
 
         message.textContent = "ADIVINASTE!!!!";
@@ -133,7 +136,7 @@ const resetFunction = () => {
 
     oportunidades = 1;
     aciertos = 0;
-    img.src = "./assests/01.png";
+    imageContainer.style.backgroundImage = "url('../assets/01.png')";
 
     for (let i = 0; i < word.length; i++) {
         hidennWord.removeChild(
@@ -163,6 +166,8 @@ const resetFunction = () => {
     if(message) {
         document.body.removeChild(message)
     }
+
+    console.log(word)
     
 }
 
