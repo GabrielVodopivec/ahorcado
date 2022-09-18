@@ -40,6 +40,7 @@ let img = document.getElementById("img");
 
 imageContainer.style.backgroundImage = "url('../assets/01.png')";
 /* img.src = "../assets/01.png"; */
+
 // modificacion del nombre
 
 
