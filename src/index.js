@@ -137,7 +137,7 @@ const resetFunction = () => {
 
     oportunidades = 1;
     aciertos = 0;
-    imageContainer.style.backgroundImage = "url('../assets/01.png')";
+    imageContainer.style.backgroundImage = "url('../assets/01.PNG')";
 
     for (let i = 0; i < word.length; i++) {
         hidennWord.removeChild(
