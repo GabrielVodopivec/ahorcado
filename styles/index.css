@@ -155,7 +155,7 @@ body {
 .butttonContainer {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
     width: 100%;
     height: 10vh;
 }

@@ -21,12 +21,14 @@ const listaDePalabras = [
     "ordenadores"
 ];
 
+console.log("hola")
+
 const randomWord = (max) => {
-    let randomNumber = Math.floor(Math.random()*max); 
+    let randomNumber = Math.floor(Math.random() * max);
     let randomWord = listaDePalabras[randomNumber].toUpperCase();
     return randomWord;
-} 
-    
+}
+
 let word = randomWord(listaDePalabras.length);
 
 let oportunidades = 1;
@@ -61,7 +63,7 @@ for (let i = 65; i < (65 + 26); i++) {
     newButton.className = "button";
 
     teclasPresionadas[letter] = false;
-    
+
     letterContainer.appendChild(newButton);
 
 }
@@ -78,7 +80,7 @@ const callbackKeyEvent = (event) => {
             listener(keyLetter, true);
         }
     }
-    
+
 }
 
 // eventListener al document para escuchar un keyUp y ejecutar el callbackKeyEvent;
@@ -87,36 +89,43 @@ document.addEventListener('keyup', callbackKeyEvent)
 
 // Funcion de reseto del juego a través del teclado, presionando Enter;
 const resetKeyEvent = (event) => {
-    if(event.key === 'Enter') {
+    if (event.key === 'Enter') {
         resetFunction();
     }
 }
 
 // eventListener para escuchar un keyUp y ejecutar el resetKeyEvent,
 // agrego uno independiente porque el callbackKeyEvent se remueve en determinadas circunstancias;
-document.addEventListener('keyup', resetKeyEvent)
+document.addEventListener('keyup', resetKeyEvent);
+
+// Funcion para deshabilitar las teclas ya presionadas;
+const buttonDisabler = (letter) => {
+
+    let letterButton = document.getElementById(letter);
+    letterButton.disabled = true;
+    letterButton.className = "buttonDisabled";
+    teclasPresionadas[letter] = true;
+
+}
 
 function listener(event, keyEvent) {
     let letter;
-    
+
     keyEvent ? letter = event : letter = event.target.innerHTML;
-    
+
     let flag = true;
 
     for (let i = 0; i < word.length; i++) {
 
         if (word[i] === letter) {
 
+            buttonDisabler(letter);
+
             let space = document.getElementById(i);
-            let letterButton = document.getElementById(letter);
 
             space.innerHTML = letter;
             space.className = "hiddenLetterGuessed";
 
-            letterButton.disabled = true;
-            letterButton.className = "buttonDisabled";
-
-            teclasPresionadas[letter] = true;
             flag = false;
             aciertos++;
         }
@@ -126,29 +135,31 @@ function listener(event, keyEvent) {
 
         oportunidades++
 
+        buttonDisabler(letter);
+
         if (oportunidades === 7) {
 
             title.innerHTML = "PERDISTE !!!";
-                
+
             for (let i = 65; i < (65 + 26); i++) {
                 document.getElementById(
                     String.fromCharCode(i)
-                    ).onclick = null;
+                ).onclick = null;
             }
-            
+
             imageContainer.style.backgroundImage = `url('../assets/0${oportunidades}.PNG')`;
             // imageContainer.style.backgroundImage = "url('../assets/gifAhorcado.gif')";
             // imageContainer.style.backgroundSize = "cover";
 
             document.removeEventListener('keyup', callbackKeyEvent)
 
-            return 
+            return
         }
 
         imageContainer.style.backgroundImage = `url('../assets/0${oportunidades}.PNG')`;
-        
+
     }
-    
+
 
     if (aciertos === word.length) {
         imageContainer.style.backgroundImage = `url('../assets/rumba-fiesta.gif')`
@@ -162,8 +173,8 @@ function listener(event, keyEvent) {
         }
 
         document.removeEventListener('keyup', callbackKeyEvent)
-    }    
-    
+    }
+
     // console.log("Aciertos: ", aciertos, "oportunidades: ", oportunidades , "letras", word.length)
 }
 
@@ -201,21 +212,21 @@ const resetFunction = () => {
     }
 
     let message = document.getElementById("message")
-    
-    if(message) {
+
+    if (message) {
         document.body.removeChild(message)
     }
 
     document.addEventListener('keyup', callbackKeyEvent)
     console.log(word)
-    
+
 }
 
-for (let i = 65; i < (65 + 26); i++) { 
-    
+for (let i = 65; i < (65 + 26); i++) {
+
     document.getElementById(
         String.fromCharCode(i)
-        ).onclick = listener;
+    ).onclick = listener;
 }
 
 reset.onclick = resetFunction;

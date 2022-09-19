@@ -1,11 +1,13 @@
 body {
     margin: 0;
     padding: 0;
+    
     height: 100vh;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
     background-image:url('https://images3.alphacoders.com/121/121889.jpg');
     font-family: 'Montserrat', sans-serif;
     background-size:cover;
@@ -62,4 +64,31 @@ body {
     -moz-transform: scale(1.1);
     -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
+}
+
+footer {
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(33, 41, 66);
+    align-items: center;
+    color: wheat;
+    height: 100px;
+    width: 100vw;
+}
+
+.linkGithub {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;;
+    height: 90px;
+    
+}
+
+img {
+    
+    border-radius: 999px;
+    
+    height: 80%;
 }
